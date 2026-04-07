@@ -79,9 +79,7 @@ public class DonorService {
         donor.setLatitude(latitude);
         donor.setLongitude(longitude);
         donorProfileRepository.save(donor);
-
-        // clear cache so new location is reflected
-        searchService.clearDonorCache();
+        
 
         System.out.println("Cache cleared after location update!");
 

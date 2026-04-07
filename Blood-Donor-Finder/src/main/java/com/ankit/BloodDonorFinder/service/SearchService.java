@@ -20,7 +20,7 @@ public class SearchService {
     private final BloodRequestRepository bloodRequestRepository;
 
     // find nearby donors by blood group and radius
-    @Cacheable(value = "nearbyDonors", key = "#bloodGroup + #latitude + #longitude + #radiusKm")
+    // @Cacheable(value = "nearbyDonors", key = "#bloodGroup + #latitude + #longitude + #radiusKm")
     public List<DonorProfile> findNearByDonors(String bloodGroup, Double latitude, Double longitude, Double radiusKm) {
 
         System.out.println("Fatching from MySQL - not from cache");
@@ -50,8 +50,8 @@ public class SearchService {
     }
 
     // find donors for a specific blood request
-    @Cacheable(value = "requestDonors",
-            key = "#requestId + #radiusKm")
+    // @Cacheable(value = "requestDonors",
+         //   key = "#requestId + #radiusKm")
     public List<DonorProfile> findDonorsForRequest(Long requestId, Double radiusKm) {
 
         // find the blood request
@@ -82,7 +82,7 @@ public class SearchService {
         return R * c;
     }
 
-    @CacheEvict(value = "nearbyDonors", allEntries = true)
+    // @CacheEvict(value = "nearbyDonors", allEntries = true)
     public void clearDonorCache() {
         System.out.println("Donor cache cleared!");
     }
