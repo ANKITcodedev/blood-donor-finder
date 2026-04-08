@@ -33,11 +33,12 @@ public class BloodRequestController {
             @RequestParam String urgency,
             @RequestParam String contactNumber,
             @RequestParam Double latitude,
-            @RequestParam Double longitude) {
+            @RequestParam Double longitude,
+            @RequestParam(required = false) String neededByDate) {
 
         return ResponseEntity.ok(bloodRequestService.createRequest(
                 seekerId, patientName, bloodGroup, unitsNeeded, hospitalName,
-                hospitalAddress, urgency, contactNumber, latitude, longitude)
+                hospitalAddress, urgency, contactNumber, latitude, longitude, neededByDate)
         );
     }
 

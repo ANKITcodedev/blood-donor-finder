@@ -10,6 +10,8 @@ import com.ankit.BloodDonorFinder.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -25,7 +27,7 @@ public class BloodRequestService {
             String bloodgroup, int unitsNeeded,
             String hospitalName, String hospitalAddress,
             String urgency, String contactNumber,
-            double latitude, double longitude) {
+            double latitude, double longitude, String neededByDate) {
 
         // find seeker
         User seeker = userRepository.findById(seekerId).orElseThrow(() -> new RuntimeException("User not found!"));
@@ -42,6 +44,13 @@ public class BloodRequestService {
         request.setContactNumber(contactNumber);
         request.setLatitude(latitude);
         request.setLongitude(longitude);
+
+        if (neededByDate != null && !neededByDate.isEmpty()) {
+            request.setNeededByDate(LocalDateTime.parse(
+                    neededByDate,
+                    DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+            ));
+        }
 
         // save request
         bloodRequestRepository.save(request);
