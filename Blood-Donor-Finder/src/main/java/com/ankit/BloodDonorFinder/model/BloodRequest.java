@@ -1,5 +1,7 @@
 package com.ankit.BloodDonorFinder.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -44,6 +46,8 @@ public class BloodRequest {
 
     private String contactNumber;
 
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @Schema(type = "string", example = "2024-12-31T10:00:00", description = "Date and time when blood is needed")
     private LocalDateTime neededByDate;
     private LocalDateTime createdAt;
 
