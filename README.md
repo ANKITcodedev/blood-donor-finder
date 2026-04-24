@@ -4,7 +4,7 @@ A life saving app that connects blood donors
 with patients in need across India.
 
 ## Live API
-**Swagger UI:** https://blood-donor-finder-production.up.railway.app/swagger-ui/index.html
+**Swagger UI:** https://blood-donor-finder-c2ey.onrender.com/swagger-ui/index.html
 
 **GitHub:** https://github.com/ANKITcodedev/blood-donor-finder
 
